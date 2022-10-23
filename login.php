@@ -52,7 +52,7 @@ button , .btn{
 </head>    
 <body>    
     <center> <h1> Student Login Form </h1> </center>   
-    <form action="#" method="POST" enctype="multipart/form-data">  
+    <form action="#" method="POST" >  
         <div class="container">   
             <label>Username : </label>   
             <input type="text" placeholder="Enter Username" name="username" required>  
@@ -73,20 +73,21 @@ button , .btn{
 
 <?php
 
-include_once("connection.php");
+include("connection.php");
 
 if(isset($_POST['login'])){
 	$username=$_POST['username'];
 	$password=$_POST['password'];
-	$query="SELECT * FROM  users WHERE email='$username' AND  password='$password'";
+	$query="SELECT * FROM  ?(database name) WHERE email='$username' AND  password='$password'";
 
 	$data=mysqli_query($conn,$query);
 
 	$total=mysqli_num_rows($data);
 
 	if($total==1){
-		$_SESSION['username']=$username;
-		header('');
+		$_SESSION['user']=$username;
+        echo $_SESSION['user'];
+		header('location:index.php');
 	}
 	else{
 		echo "Login failed";

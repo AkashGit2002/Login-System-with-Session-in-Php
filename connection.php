@@ -10,7 +10,7 @@ $user='root';
 
 $password='';
 
-$db='sql_login';
+$db='db_name';
 
 $conn=mysqli_connect($server,$user,$password,$db);
 
